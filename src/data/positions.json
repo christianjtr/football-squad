@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "position": "Goalkeeper",
+    "numOfPlayers": 4
+  },
+  {
+    "id": 2,
+    "position": "Defender",
+    "numOfPlayers": 8
+  },
+  {
+    "id": 3,
+    "position": "Midfielder",
+    "numOfPlayers": 15
+  },
+  {
+    "id": 4,
+    "position": "Forward",
+    "numOfPlayers": 5
+  }
+]
