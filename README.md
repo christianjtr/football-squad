@@ -1,5 +1,14 @@
 # Football squad stats
 
+### Comments
+
+This is a conceptual test aimed at trying out technologies such as:
+
+- React (TypeScript).
+- [Vite](https://vitejs.dev/)
+- [Tailwindcss](https://tailwindcss.com/)
+- [daisyUI](https://daisyui.com/)
+
 ### Installation and running the project
 
 The project requires [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/) to run.
@@ -18,7 +27,7 @@ git clone https://github.com/christianjtr/football-squad.git
 
 #### Responsive mode
 
-...
+![](responsive-demo.gif)
 
 ### Compiles and hot-reloads for development
 
