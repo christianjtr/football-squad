@@ -29,6 +29,12 @@ git clone https://github.com/christianjtr/football-squad.git
 
 ![](responsive-demo.gif)
 
+### Live Demo
+
+Click on the following link (Github page project):
+
+https://christianjtr.github.io/football-squad
+
 ### Compiles and hot-reloads for development
 
 ```
