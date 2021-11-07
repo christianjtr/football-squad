@@ -1,1 +1,0 @@
-export type StatCategory = 'goals' | 'assists' | 'appearances';
