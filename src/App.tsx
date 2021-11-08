@@ -15,7 +15,7 @@ import PlayerCollection from './data/players.json';
 
 function App(): JSX.Element {
   return (
-    <div className="md:container md:mx-auto p-5 bg-indigo-100">
+    <div className="container p-5 bg-indigo-100">
       <div className="navbar mb-2 bg-base-100 text-gray-700 mb-4">
         <div className="flex-none lg:flex">
           <img src={footballTeamLogo} alt="football-team-logo" />
@@ -24,15 +24,15 @@ function App(): JSX.Element {
           <span className="text-2xl font-medium">Football Squad</span>
         </div>
       </div>
-      <div className="grid lg:grid-cols-6 xl:grid-cols-6 md:grid-cols-1  sm:grid-cols-1 gap-4">
-        <div className="md:col-span-2">
-          <div className="grid xl:grid-rows-3 xl:grid-rows-3 md:grid-rows-1 sm:grid-rows-1 gap-4">
+      <div className="grid lg:grid-cols-6 xl:grid-cols-6 md:grid-cols-1 sm:grid-cols-1 gap-4">
+        <div className="md:col-span-2 sm:col-span-1">
+          <div className="grid xl:grid-rows-2 lg:grid-rows-2 md:grid-rows-2 sm:grid-rows-1 gap-4">
             <LeaderBoard players={PlayerCollection} category="goals" top={5} />
             <PositionList positions={PositionCollection} />
           </div>
         </div>
-        <div className="md:col-span-4">
-          <div className="w-full stats shadow-md mb-4 rounded-none">
+        <div className="md:col-span-4 sm:col-span-1">
+          <div className="shadow-md mb-4 rounded-none grid grid-rows-1 md:flex-none md:flex-nowrap sm:flex sm:flex-wrap">
             <Stat title="Total of players" value={PlayerCollection.length} />
             <Stat
               title="Total of goals"

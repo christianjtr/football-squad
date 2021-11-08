@@ -24,34 +24,25 @@ function LeaderBoard(props: LeaderBoardPropsInterface): JSX.Element {
     }));
 
   return (
-    <ul className="menu p-4 shadow-md text-base-content text-opacity-40 bg-base-100">
+    <ul className="menu p-4 shadow-md text-base-content bg-base-100">
       <li className="menu-title">
         <span>Leader board</span>
       </li>
-      <li className="capitalize text-primary px-4">{category}</li>
-      <li className="flex flex-row text-xs font-medium text-gray-900">
-        <span className="flex flex-1 flex-row">Player</span>
-        <span className="flex flex-1 flex-row">Appearances</span>
-        <span className="flex flex-1 flex-row">Goals</span>
-        <span className="flex flex-1 flex-row">Average</span>
+      <li className="w-full capitalize text-primary px-4">{category}</li>
+      <li className="grid grid-cols-4 text-sm text-gray-900">
+        <span>Player</span>
+        <span>Appear.</span>
+        <span>Goals</span>
+        <span>Average</span>
       </li>
-      {topPlayersByCategory.map(
-        ({ position, fullName, appearances, average }, index, items) => (
-          <li
-            key={index}
-            className="flex flex-row text-sm py-3 px-4 m-0 border-b-2 text-gray-600">
-            <p className="flex flex-1 flex-col p-0">
-              <span className="text-xs text-gray-400">{position}</span>
-              <span>{fullName}</span>
-            </p>
-            <span className="flex flex-1 flex-row justify-end p-0">{appearances}</span>
-            <span className="flex flex-1 flex-row justify-end p-0">
-              {items[index][category]}
-            </span>
-            <span className="flex flex-1 flex-row justify-end p-0">{average}</span>
-          </li>
-        ),
-      )}
+      {topPlayersByCategory.map(({ fullName, appearances, average }, index, items) => (
+        <li key={index} className="grid grid-cols-4 text-sm border-b-2 text-gray-600">
+          <span>{fullName}</span>
+          <span className="flex justify-end">{appearances}</span>
+          <span className="flex justify-end">{items[index][category]}</span>
+          <span className="flex justify-end">{average}</span>
+        </li>
+      ))}
     </ul>
   );
 }

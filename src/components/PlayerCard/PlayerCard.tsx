@@ -26,7 +26,7 @@ function PlayerCard(props: PlayerCardPropsInterface): JSX.Element {
         <div>
           <p className="text-base-content">{number}</p>
           <h2 className="card-title">{fullName}</h2>
-          <p className="text-base-content text-opacity-40">{position}</p>
+          <p className="text-base-content">{position}</p>
         </div>
       </div>
       <div className="card-body text-gray-600">
