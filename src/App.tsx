@@ -1,4 +1,5 @@
 import React from 'react';
+import './reset.css';
 import './App.css';
 
 import footballTeamLogo from './assets/football_team_logo.png';
