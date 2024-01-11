@@ -15,8 +15,8 @@ import PlayerCollection from './data/players.json';
 
 function App(): JSX.Element {
   return (
-    <div className="container p-5 bg-indigo-100">
-      <div className="navbar mb-2 bg-base-100 text-gray-700 mb-4">
+    <div className="container p-5 bg-indigo-100 mx-auto">
+      <div className="navbar bg-base-100 text-gray-700 mb-4">
         <div className="flex-none lg:flex">
           <img src={footballTeamLogo} alt="football-team-logo" />
         </div>
