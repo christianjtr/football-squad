@@ -4,6 +4,7 @@
   "author": {
     "name": "Christian Torrealba"
   },
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
