@@ -8,7 +8,7 @@ export interface PlayerCardPropsInterface {
   player: Player;
 }
 
-function PlayerCard(props: PlayerCardPropsInterface): JSX.Element {
+function PlayerCard(props: PlayerCardPropsInterface): React.JSX.Element {
   const {
     player: { fullName, number, position, country, appearances, goals, assists },
   } = props;

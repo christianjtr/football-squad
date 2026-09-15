@@ -10,7 +10,7 @@ export interface LeaderBoardPropsInterface {
   top?: 3 | 5;
 }
 
-function LeaderBoard(props: LeaderBoardPropsInterface): JSX.Element {
+function LeaderBoard(props: LeaderBoardPropsInterface): React.JSX.Element {
   const { players, category, top } = props;
 
   const DEFAULT_TOP = 3;

@@ -14,7 +14,7 @@ import Stat from './components/Stat/Stat';
 import PositionCollection from './data/positions.json';
 import PlayerCollection from './data/players.json';
 
-function App(): JSX.Element {
+function App(): React.JSX.Element {
   return (
     <div className="container p-5 bg-indigo-100 mx-auto">
       <div className="navbar bg-base-100 text-gray-700 mb-4">

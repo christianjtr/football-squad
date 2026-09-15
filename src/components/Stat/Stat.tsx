@@ -5,7 +5,7 @@ export interface StatPropsInterface {
   value: number;
 }
 
-function Stat(props: StatPropsInterface): JSX.Element {
+function Stat(props: StatPropsInterface): React.JSX.Element {
   const { title, value } = props;
 
   return (

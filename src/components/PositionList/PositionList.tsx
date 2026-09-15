@@ -7,13 +7,14 @@ export interface PositionListPropsInterface {
   positions: Position[];
 }
 
-function PositionList(props: PositionListPropsInterface): JSX.Element {
+function PositionList(props: PositionListPropsInterface): React.JSX.Element {
   const { positions } = props;
 
   return (
     <ul
       className="menu p-4 shadow-md text-gray-600 bg-base-100"
-      style={{ height: 'fit-content' }}>
+      style={{ height: 'fit-content' }}
+    >
       <li className="menu-title">
         <span>Players per position</span>
       </li>
