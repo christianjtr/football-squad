@@ -6,7 +6,7 @@ Project-level engineering rules. Follow the interview engineering principles in
 ## Stack
 
 - React 19 + TypeScript 7, built with Vite 8
-- Tailwind CSS 4 (`@tailwindcss/postcss`) + daisyUI 5 (loaded via `@plugin "daisyui"` in `src/App.css`)
+- Tailwind CSS 4 (`@tailwindcss/postcss`) + daisyUI 5 (light-only theme via `@plugin "daisyui" { themes: light --default; }` in `src/App.css`)
 - Yarn 1 (classic), `yarn.lock` committed
 
 ## Commands
@@ -46,3 +46,6 @@ See `CHANGELOG.md` for the full agenda. Notable decisions:
   in `src/App.css` is the source of truth. PostCSS plugins run **inline** from `vite.config.ts`
   (`@tailwindcss/postcss` + `autoprefixer`) — Vite 8 did not discover a project `postcss.config.mjs`,
   so the config file was removed to avoid a dead second source of truth.
+- **Light-only theme pinned (2026-09-15):** `@plugin "daisyui" { themes: light --default; }` removes the
+  default `dark --prefersdark` theme, whose `prefers-color-scheme: dark` override turned `bg-base-100`
+  surfaces dark on dark-mode OSes. If OS dark-mode support is desired, re-add `dark --prefersdark`.

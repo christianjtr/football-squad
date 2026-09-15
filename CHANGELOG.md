@@ -5,6 +5,45 @@ why, and what remains.
 
 ---
 
+## 2026-09-15 — Fix light theme rendering (daisyUI auto-dark override)
+
+### Symptom
+
+On machines with OS dark mode enabled (`prefers-color-scheme: dark`), the **player cards** and
+**left summary panels** (`LeaderBoard`, `PositionList`) rendered with a **dark** background while
+the rest of the page stayed light — an inconsistent, "darker" look.
+
+### Root cause
+
+daisyUI 5 ships two themes by default: `light --default` and `dark --prefersdark`. The latter
+emits `@media (prefers-color-scheme: dark) { :root:not([data-theme]) { ... } }`, which overwrites
+all `base-*` CSS variables (e.g. `--color-base-100` → near-black) whenever the OS is in dark mode
+and `<html>` has no explicit `data-theme` attribute. Every `bg-base-100` surface then flipped dark.
+
+### Change
+
+| File | Change |
+|---|---|
+| `src/App.css` | `@plugin "daisyui";` → `@plugin "daisyui" { themes: light --default; }` — light is now the only enabled theme |
+
+This follows the documented daisyUI approach for disabling the dark theme
+(https://daisyui.com/docs/themes/). Effect: the `dark` theme and the auto-dark
+`prefers-color-scheme` block are removed from the bundle (CSS shrank ~34.9 kB → ~31.4 kB).
+
+### Validation
+
+- [x] Built CSS contains zero `[data-theme=dark]` selectors and zero `prefers-color-scheme: dark` blocks
+- [x] `--color-base-100` is `oklch(100% 0 0)` (white) in both dev and build output
+- [x] Headless Chrome render with forced dark OS preference: 32 player cards + left summary mount without errors
+- [x] `yarn lint` and `yarn build` pass
+
+### Remaining / Follow-up
+
+- [ ] If OS dark-mode support is ever wanted, re-add `dark --prefersdark` to `themes` (or add a
+      `theme-change` toggle) — currently the app is intentionally light-only
+
+---
+
 ## 2026-09-15 — Toolchain modernization (React 19 / TS 7 / Tailwind 4)
 
 ### Context
