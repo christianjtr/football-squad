@@ -5,6 +5,45 @@ why, and what remains.
 
 ---
 
+## 2026-10-25 — Refine dashboard layout and player cards
+
+### Changes
+
+| File | Change |
+|---|---|
+| `src/App.tsx` | Replaced the narrow six-column layout with a responsive sidebar/content grid, a consistent three-column stats strip, and responsive player-card columns. |
+| `src/components/LeaderBoard/LeaderBoard.tsx` | Added proportional columns, right-aligned numeric headers and values, and tighter row spacing for readability in the sidebar. |
+| `src/components/PlayerCard/PlayerCard.tsx` | Reworked cards into a compact profile header and aligned definition-list stats; long names and nationalities no longer stretch the card layout. |
+| `src/components/PositionList/PositionList.tsx`, `src/components/Stat/Stat.tsx` | Normalized component sizing within the new responsive layout. |
+
+### Validation
+
+- [ ] `yarn lint`
+- [ ] `yarn build`
+- [ ] Verify desktop, tablet, and mobile layouts in browser
+
+---
+
+## 2026-10-25 — Fix light surfaces and harden roster rendering
+
+### Changes
+
+| File | Change |
+|---|---|
+| `index.html`, `src/App.css`, `src/components/PlayerCard/PlayerCard.tsx` | Explicitly pin the document to daisyUI's light theme, define light base surface/text tokens, and apply the base-content color to player cards. |
+| `src/data/players.json`, `src/types/Player.ts` | Add stable player IDs for React list keys. |
+| `src/components/LeaderBoard/LeaderBoard.tsx` | Sort a copy of the player list, handle zero appearances, display the selected stat label, and use stable keys. |
+| `src/data/positions.json`, `src/types/Position.ts`, `src/App.tsx`, `src/components/PositionList/PositionList.tsx` | Keep position names as static configuration and derive player counts from the roster. |
+| `src/main.tsx` | Fail clearly if the root mount element is missing. |
+
+### Validation
+
+- [ ] `yarn lint`
+- [ ] `yarn build`
+- [ ] Verify light cards with OS dark mode enabled
+
+---
+
 ## 2026-09-15 — Fix light theme rendering (daisyUI auto-dark override)
 
 ### Symptom

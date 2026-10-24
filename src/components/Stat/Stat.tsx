@@ -9,7 +9,7 @@ function Stat(props: StatPropsInterface): React.JSX.Element {
   const { title, value } = props;
 
   return (
-    <div className="stat">
+    <div className="stat min-w-0">
       <div className="stat-title">{title}</div>
       <div className="stat-value text-primary">{value}</div>
     </div>
