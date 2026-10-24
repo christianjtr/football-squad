@@ -23,11 +23,11 @@ git clone https://github.com/christianjtr/football-squad.git
 
 #### Full width mode
 
-![](full-width-demo.gif)
+![](./samples/full-width-demo.gif)
 
 #### Responsive mode
 
-![](responsive-demo.gif)
+![](./samples/responsive-demo.gif)
 
 ### Live Demo
 
