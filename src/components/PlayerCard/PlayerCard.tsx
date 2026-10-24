@@ -14,40 +14,36 @@ function PlayerCard(props: PlayerCardPropsInterface): React.JSX.Element {
   } = props;
 
   return (
-    <div className="card shadow-md compact side bg-base-100 rounded-none">
-      <div className="flex-row items-center space-x-4 card-body">
-        <div>
+    <article className="card h-full rounded-none bg-base-100 text-base-content shadow-md">
+      <div className="card-body gap-4 p-5">
+        <div className="flex min-w-0 items-center gap-4">
           <div className="avatar">
-            <div className="rounded-full w-14 h-14 shadow">
-              <img src={mockedPlayerImage} alt={`player-image-${number}`} />
+            <div className="h-14 w-14 shrink-0 rounded-full shadow">
+              <img src={mockedPlayerImage} alt={`Portrait of ${fullName}`} />
             </div>
           </div>
+          <div className="min-w-0">
+            <p className="text-sm text-base-content/70">#{number}</p>
+            <h2 className="card-title block truncate text-lg" title={fullName}>
+              {fullName}
+            </h2>
+            <p className="text-sm text-base-content/70">{position}</p>
+          </div>
         </div>
-        <div>
-          <p className="text-base-content">{number}</p>
-          <h2 className="card-title">{fullName}</h2>
-          <p className="text-base-content">{position}</p>
-        </div>
+        <dl className="grid grid-cols-2 gap-x-3 gap-y-2 text-sm text-gray-600">
+          <dt>Nationality</dt>
+          <dd className="truncate text-right font-bold" title={country}>
+            {country}
+          </dd>
+          <dt>Appearances</dt>
+          <dd className="text-right font-bold">{appearances}</dd>
+          <dt>Goals</dt>
+          <dd className="text-right font-bold">{goals}</dd>
+          <dt>Assists</dt>
+          <dd className="text-right font-bold">{assists}</dd>
+        </dl>
       </div>
-      <div className="card-body text-gray-600">
-        <p className="flex">
-          <span className="flex-1">Nationality</span>
-          <span className="flex-1 text-right font-bold">{country}</span>
-        </p>
-        <p className="flex">
-          <span className="flex-1">Appearances</span>
-          <span className="flex-1 text-right font-bold">{appearances}</span>
-        </p>
-        <p className="flex">
-          <span className="flex-1">Goals</span>
-          <span className="flex-1 text-right font-bold">{goals}</span>
-        </p>
-        <p className="flex">
-          <span className="flex-1">Assists</span>
-          <span className="flex-1 text-right font-bold">{assists}</span>
-        </p>
-      </div>
-    </div>
+    </article>
   );
 }
 

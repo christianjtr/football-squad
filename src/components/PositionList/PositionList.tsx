@@ -11,17 +11,14 @@ function PositionList(props: PositionListPropsInterface): React.JSX.Element {
   const { positions } = props;
 
   return (
-    <ul
-      className="menu p-4 shadow-md text-gray-600 bg-base-100"
-      style={{ height: 'fit-content' }}
-    >
+    <ul className="w-full menu h-fit bg-base-100 p-4 text-gray-600 shadow-md">
       <li className="menu-title">
         <span>Players per position</span>
       </li>
-      {positions.map(({ id, position, numOfPlayers }) => (
-        <li key={id} className="flex flex-row justify-between items-center">
+      {positions.map(({ position, numOfPlayers }) => (
+        <li key={position} className="flex flex-row justify-between items-center">
           <span>{position}</span>
-          <div className="badge w-7 badge-primary items-center">{numOfPlayers}</div>
+          <div className="badge badge-primary w-7 items-center">{numOfPlayers}</div>
         </li>
       ))}
     </ul>

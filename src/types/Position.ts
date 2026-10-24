@@ -1,5 +1,6 @@
+export type PositionName = 'Goalkeeper' | 'Defender' | 'Midfielder' | 'Forward';
+
 export interface Position {
-    id: number;
-    position: string;
-    numOfPlayers: number;
+  position: PositionName;
+  numOfPlayers: number;
 }

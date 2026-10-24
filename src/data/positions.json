@@ -1,22 +1,14 @@
 [
   {
-    "id": 1,
-    "position": "Goalkeeper",
-    "numOfPlayers": 4
+    "position": "Goalkeeper"
   },
   {
-    "id": 2,
-    "position": "Defender",
-    "numOfPlayers": 8
+    "position": "Defender"
   },
   {
-    "id": 3,
-    "position": "Midfielder",
-    "numOfPlayers": 15
+    "position": "Midfielder"
   },
   {
-    "id": 4,
-    "position": "Forward",
-    "numOfPlayers": 5
+    "position": "Forward"
   }
 ]

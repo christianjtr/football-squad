@@ -3,3 +3,8 @@
 @plugin "daisyui" {
   themes: light --default;
 }
+
+@theme {
+  --color-base-100: oklch(100% 0 0);
+  --color-base-content: oklch(27.8% 0.033 256.848);
+}
