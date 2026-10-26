@@ -14,12 +14,13 @@ Project-level engineering rules. Follow the interview engineering principles in
 | Command | Purpose |
 |---|---|
 | `yarn dev` | Start the Vite dev server |
-| `yarn build` | Type-check (`tsc`) then production build (`vite build`) |
+| `yarn build` | Validate data, type-check (`tsc`), then build (`vite build`) |
 | `yarn serve` | Preview the production build |
 | `yarn lint` | Type-check (`tsc --noEmit`) — see decision log below |
-| `yarn format` | Format source + root config files with Prettier |
+| `yarn validate` | Validate roster/position JSON and current totals |
+| `yarn format` | Format source, scripts, and root config files with Prettier |
 
-Description: after any change run `yarn lint` and `yarn build`.
+Description: after any change run `yarn validate`, `yarn lint`, and `yarn build`.
 
 ## Conventions
 
@@ -27,8 +28,9 @@ Description: after any change run `yarn lint` and `yarn build`.
 - Explicit function return types: `function X(props: Props): React.JSX.Element` (use `React.JSX.Element`, NOT the removed global `JSX.Element`)
 - Folder-per-component under `src/components/<Name>/<Name>.tsx`
 - Data flows one way: static JSON in `src/data` → imported at module scope in `App.tsx` → props → render
+- `src/data` is guarded by `scripts/validate-data.mjs`, which runs before every build
 - No state management library; components are pure functions of props
-- PostCSS config lives **inline** in `vite.config.ts` (`@tailwindcss/postcss` + `autoprefixer`) — do not reintroduce `postcss.config.*`
+- PostCSS config lives **inline** in `vite.config.ts` (`@tailwindcss/postcss`) — do not reintroduce `postcss.config.*`
 
 ## Architecture notes
 
@@ -39,12 +41,15 @@ Description: after any change run `yarn lint` and `yarn build`.
 
 See `CHANGELOG.md` for the full agenda. Notable decisions:
 
+- **Roster validation (2026-10-26):** `scripts/validate-data.mjs` checks unique IDs and shirt numbers,
+  valid positions, non-negative stats, and the current roster totals. `prebuild` runs it, so a bad
+  data edit fails before Vite builds. Update `EXPECTED_TOTALS` when the roster changes intentionally.
 - **ESLint removed (2026-09-15):** `@typescript-eslint` (latest stable + canary) hard-crashes with
   TypeScript 7 (`if versionMajor >= 7 throw`). Type integrity is enforced by `tsc` in `yarn lint`
   and `yarn build`. Reintroduce ESLint once typescript-eslint supports TS 7.
 - **Tailwind v3 JS config removed:** Tailwind 4 is CSS-first; `@import "tailwindcss"` + `@plugin "daisyui"`
   in `src/App.css` is the source of truth. PostCSS plugins run **inline** from `vite.config.ts`
-  (`@tailwindcss/postcss` + `autoprefixer`) — Vite 8 did not discover a project `postcss.config.mjs`,
+  (`@tailwindcss/postcss`) — Vite 8 did not discover a project `postcss.config.mjs`,
   so the config file was removed to avoid a dead second source of truth.
 - **Light-only theme pinned (2026-09-15):** `@plugin "daisyui" { themes: light --default; }` removes the
   default `dark --prefersdark` theme, whose `prefers-color-scheme: dark` override turned `bg-base-100`

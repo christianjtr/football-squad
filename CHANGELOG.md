@@ -5,6 +5,47 @@ why, and what remains.
 
 ---
 
+## 2026-10-26 — Audit fixes: deploy base, roster guard, accessibility, dependencies
+
+### Context
+
+A repository audit found that a normal build emitted root-relative `/assets/...` URLs, the mock
+roster was force-cast without validation, the demo data was not labeled, and several dependencies
+and docs were stale.
+
+### Changes
+
+| File | Change |
+|---|---|
+| `vite.config.ts` | Set `base: './'` so built assets work from the GitHub Pages project URL; removed `autoprefixer` from inline PostCSS. |
+| `src/data/players.json` | Renumbered duplicate shirt numbers: Judah Strickland `1` → `12`, Hunter Mendoza `86` → `20`. |
+| `scripts/validate-data.mjs` | Added a dependency-free validator for unique IDs/numbers, valid positions, non-negative stats, and roster totals. |
+| `package.json` | Added `validate` and `prebuild`; added Node engines and `packageManager`; removed unused `@types/node`, `autoprefixer`, and dead `resolutions`; moved `daisyui` to devDependencies. |
+| `.nvmrc` | Pin Node 24. |
+| `src/App.tsx` | Added a visible `Demo data` badge, promoted the title to `<h1>`, and marked the decorative logo image empty-alt. |
+| `src/components/PlayerCard/PlayerCard.tsx` | Marked placeholder portraits as decorative (`alt=""`). |
+| `src/components/LeaderBoard/LeaderBoard.tsx` | Show `—` instead of a meaningless average when the category is appearances. |
+| `README.md` | Added install/requirements, fixed stale `lint:fix` docs, documented all scripts, and noted relative deploy assets. |
+| `AGENTS.md` | Documented `yarn validate`/`prebuild`, updated PostCSS notes, and recorded the roster guard. |
+| `.gitignore`, `yarn-error.log` | Ignored and deleted the stale tracked Yarn error log. |
+| `src/index.css`, `src/types/Stats.ts` | Prettier normalized existing formatting; no behavior change. |
+
+### Validation
+
+- [x] `yarn validate` — 32 players, 4 positions, 44 goals, 82 assists, 625 appearances
+- [x] `yarn lint`
+- [x] `yarn build` — prebuild validation and Vite build pass
+- [x] `dist/index.html` uses `./assets/...` paths
+- [x] Browser smoke test at desktop and 320 px: one `<h1>`, visible `Demo data` badge, 32 player cards, all 33 images loaded, no non-empty placeholder alts, no horizontal overflow
+
+### Remaining / Follow-up
+
+- [ ] Delete or compress the 11 MB + 3.8 MB README demo GIFs (deferred).
+- [ ] Add a CI/deploy workflow or retire the `demo` branch (deferred).
+- [ ] Remove the `Demo data` badge and replace the mock roster with v2 match data.
+
+---
+
 ## 2026-10-25 — Refine dashboard layout and player cards
 
 ### Changes
