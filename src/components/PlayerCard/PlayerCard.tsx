@@ -19,7 +19,7 @@ function PlayerCard(props: PlayerCardPropsInterface): React.JSX.Element {
         <div className="flex min-w-0 items-center gap-4">
           <div className="avatar">
             <div className="h-14 w-14 shrink-0 rounded-full shadow">
-              <img src={mockedPlayerImage} alt={`Portrait of ${fullName}`} />
+              <img src={mockedPlayerImage} alt="" />
             </div>
           </div>
           <div className="min-w-0">
