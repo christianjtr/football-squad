@@ -32,19 +32,23 @@ function LeaderBoard(props: LeaderBoardPropsInterface): React.JSX.Element {
         <span className="text-right">{categoryLabel}</span>
         <span className="text-right">Average</span>
       </li>
-      {topPlayersByCategory.map((player) => (
-        <li
-          key={player.id}
-          className="grid grid-cols-[minmax(0,1.5fr)_repeat(3,minmax(0,1fr))] gap-2 border-b border-gray-300 py-2 text-xs text-gray-600 sm:text-sm"
-        >
-          <span className="min-w-0 wrap-break-word">{player.fullName}</span>
-          <span className="text-right">{player.appearances}</span>
-          <span className="text-right">{player[category]}</span>
-          <span className="text-right">
-            {player.appearances > 0 ? (player[category] / player.appearances).toFixed(2) : '—'}
-          </span>
-        </li>
-      ))}
+      {topPlayersByCategory.map((player) => {
+        const average =
+          category === 'appearances' || player.appearances === 0
+            ? '—'
+            : (player[category] / player.appearances).toFixed(2);
+
+        return (
+          <li
+            key={player.id}
+            className="grid grid-cols-[minmax(0,1.5fr)_repeat(3,minmax(0,1fr))] gap-2 border-b border-gray-300 py-2 text-xs text-gray-600 sm:text-sm">
+            <span className="min-w-0 wrap-break-word">{player.fullName}</span>
+            <span className="text-right">{player.appearances}</span>
+            <span className="text-right">{player[category]}</span>
+            <span className="text-right">{average}</span>
+          </li>
+        );
+      })}
     </ul>
   );
 }

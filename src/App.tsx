@@ -26,8 +26,9 @@ function App(): React.JSX.Element {
         <div className="flex-none lg:flex">
           <img src={footballTeamLogo} alt="football-team-logo" />
         </div>
-        <div className="flex-1 px-2 mx-2 lg:flex">
-          <span className="text-2xl font-medium">Football Squad</span>
+        <div className="flex flex-1 items-center gap-3 px-2 mx-2">
+          <h1 className="text-2xl font-medium">Football Squad</h1>
+          <span className="badge badge-warning badge-sm">Demo data</span>
         </div>
       </div>
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(19rem,1fr)_minmax(0,2fr)]">
